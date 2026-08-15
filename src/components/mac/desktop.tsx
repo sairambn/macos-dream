@@ -3,6 +3,8 @@ import { MacWindow, type WindowState } from "./mac-window";
 import { FinderAbout, ProjectsApp, TerminalApp, ContactApp } from "./apps";
 import { profile } from "@/data/portfolio";
 import wallpaper from "@/assets/wallpaper.jpg";
+import avatar from "@/assets/avatar-head.jpg";
+import { LockScreen } from "./lock-screen";
 
 type AppId = "about" | "projects" | "terminal" | "contact";
 
@@ -33,6 +35,7 @@ function useClock() {
 export function Desktop() {
   const [wins, setWins] = useState<WindowState[]>([]);
   const [top, setTop] = useState(10);
+  const [locked, setLocked] = useState(true);
   const now = useClock();
 
   const open = useCallback(
@@ -65,12 +68,13 @@ export function Desktop() {
   );
 
   useEffect(() => {
+    if (locked) return;
     const isNarrow = window.innerWidth < 860;
     setWins([]);
     const boot = isNarrow ? (["about"] as AppId[]) : (["about", "terminal"] as AppId[]);
     boot.forEach((id, i) => setTimeout(() => open(id), 250 + i * 320));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [locked]);
 
   const update = (id: string, patch: Partial<WindowState>) =>
     setWins((prev) => prev.map((w) => (w.id === id ? { ...w, ...patch } : w)));
@@ -115,6 +119,20 @@ export function Desktop() {
               now.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })
             : ""}
         </span>
+        <img
+          src={avatar}
+          alt=""
+          aria-hidden
+          className="size-[18px] rounded-full object-cover ring-1 ring-[oklch(1_0_0/0.4)]"
+        />
+        <button
+          onClick={() => setLocked(true)}
+          className="text-[12px] text-foreground/75 transition hover:text-foreground"
+          aria-label="Lock screen"
+          title="Lock screen"
+        >
+          ⏻
+        </button>
       </div>
 
       {/* Desktop icons */}
@@ -136,6 +154,13 @@ export function Desktop() {
 
       {/* Hero */}
       <div className="pointer-events-none absolute left-6 top-16 z-0 max-w-md sm:left-12 sm:top-24">
+        <img
+          src={avatar}
+          alt={`${profile.name} portrait`}
+          width={88}
+          height={88}
+          className="mb-4 size-[76px] rounded-full object-cover shadow-[0_12px_36px_oklch(0_0_0/0.45)] ring-2 ring-[oklch(1_0_0/0.35)]"
+        />
         <h1 className="text-4xl font-semibold tracking-tight text-foreground drop-shadow-lg sm:text-5xl">
           {profile.name}
         </h1>
@@ -179,6 +204,8 @@ export function Desktop() {
           );
         })}
       </nav>
+
+      {locked && <LockScreen onUnlock={() => setLocked(false)} />}
     </div>
   );
 }

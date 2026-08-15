@@ -7,6 +7,7 @@ import {
   principles,
   projects,
 } from "@/data/portfolio";
+import avatar from "@/assets/avatar-head.jpg";
 
 function Chip({ children }: { children: React.ReactNode }) {
   return (
@@ -35,9 +36,13 @@ export function FinderAbout() {
       </aside>
       <div className="space-y-8 p-6 sm:p-8">
         <div id="about-profile" className="flex flex-wrap items-center gap-5">
-          <div className="grid size-20 place-items-center rounded-2xl bg-[var(--gradient-primary)] text-2xl font-semibold text-[oklch(0.15_0.02_260)]">
-            SN
-          </div>
+          <img
+            src={avatar}
+            alt={`${profile.name} portrait`}
+            width={80}
+            height={80}
+            className="size-20 rounded-2xl object-cover ring-1 ring-[var(--glass-border)]"
+          />
           <div>
             <h2 className="text-2xl font-semibold tracking-tight">{profile.name}</h2>
             <p className="text-sm text-muted-foreground">{profile.headline}</p>
