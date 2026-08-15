@@ -14,9 +14,9 @@ const APPS: { id: AppId; title: string; icon: string; dock: string }[] = [
 ];
 
 const DEFAULTS: Record<AppId, { w: number; h: number; x: number; y: number }> = {
-  about: { w: 860, h: 560, x: 90, y: 90 },
+  about: { w: 840, h: 560, x: 400, y: 96 },
   projects: { w: 780, h: 460, x: 260, y: 190 },
-  terminal: { w: 520, h: 280, x: 520, y: 400 },
+  terminal: { w: 520, h: 280, x: 300, y: 520 },
   contact: { w: 460, h: 470, x: 660, y: 130 },
 };
 
@@ -103,7 +103,7 @@ export function Desktop() {
 
       {/* Menu bar */}
       <div className="mac-menubar fixed inset-x-0 top-0 z-[1000] flex h-7 items-center gap-4 px-4 text-[13px]">
-        <span className="text-base leading-none"></span>
+        <span className="text-[13px] leading-none text-foreground/90">◉</span>
         <span className="font-semibold">{profile.shortName}</span>
         <span className="hidden text-foreground/70 sm:inline">File</span>
         <span className="hidden text-foreground/70 sm:inline">View</span>
