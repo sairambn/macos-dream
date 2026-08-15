@@ -103,7 +103,7 @@ export function FinderAbout() {
 }
 
 export function ProjectsApp() {
-  const [selected, setSelected] = useState(projects[0].name);
+  const [selected, setSelected] = useState(projects[0]!.name);
   const project = projects.find((p) => p.name === selected)!;
   return (
     <div className="grid h-full grid-cols-1 sm:grid-cols-[230px_1fr]">
