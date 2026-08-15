@@ -1,24 +1,49 @@
-# macOS Dream
+# Sairam BN — macOS Portfolio
 
-https://github.com/sairambn/sairambn-portfolio-website edit the enitre webiste like an beeeeeetst mac os best ever possbbile so good ever possbile
+Interactive macOS-style portfolio for Sairam Nagarajan.
 
-This project was built with [Lovable](https://lovable.dev).
+**Live intent:** bnsairam.vercel.app
 
-## Build with Lovable
+Software Engineer · DSA · Python · Java · CEG Chennai '25
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d4e69450-e02d-4804-9c3c-4b4910abf7dd).
+## What you get
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- Lock screen with clock and unlock
+- Desktop wallpaper, menu bar, clock
+- Draggable, resizable, minimizable, maximizable windows
+- Dock with open indicators
+- Spotlight search (⌘K / Ctrl+K)
+- Apps: About, Projects, Terminal (interactive), Contact
+- Full project list with live links and GitHub
 
-## Development
+## Stack
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+| Layer | Tech |
+| --- | --- |
+| Framework | TanStack Start + React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Build | Vite |
+| Deploy | Vercel |
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Local
+
+```bash
+bun install   # or npm i
+bun run dev   # or npm run dev
+bun run build && bun run preview
 ```
+
+Requires Bun or Node 20+.
+
+## Deploy
+
+Push to `main` and connect Vercel with the TanStack Start preset.
+
+## Content
+
+Edit `src/data/portfolio.ts` for profile, projects, skills, and impact.
+
+## License
+
+MIT · Built by Sairam BN
